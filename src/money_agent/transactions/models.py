@@ -4,7 +4,7 @@ from enum import Enum;
 
 class TransactionType(str, Enum):
     """The kinds of transactions we can identify from a raw narration."""
-    SUBSCRIPTION = "subscritption"
+    SUBSCRIPTION = "subscription"
     SALARY = "salary"
     FEE = "fee"
     EMI = "emi"

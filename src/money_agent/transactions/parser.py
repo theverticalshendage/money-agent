@@ -40,6 +40,10 @@ def parse_narration(raw_narration: str, amount: float, txn_date: date) -> Transa
     # 2. Is it a known merchant / salary?
     for keyword, (clean_name, txn_type) in _MERCHANT_RULES.items():
         if keyword in text:
+            if txn_type == TransactionType.SUBSCRIPTION and amount >= 0:
+                continue
+            if txn_type == TransactionType.SALARY and amount <= 0:
+                continue
             return Transaction(
                 raw_narration=raw_narration,
                 amount=amount,
