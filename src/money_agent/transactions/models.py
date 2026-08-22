@@ -20,3 +20,10 @@ class Transaction:
     txn_date: date
     txn_type: TransactionType = TransactionType.UNKNOWN
     merchant: str | None = None  # e.g. "NETFLIX" — None if we couldn't identify one
+
+
+@dataclass
+class BalancePoint:
+    """A transaction paired with the running balance after it was applied."""
+    transaction: Transaction
+    balance_after: float

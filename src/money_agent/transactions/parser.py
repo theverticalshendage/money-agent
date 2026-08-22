@@ -17,6 +17,29 @@ _FEE_KEYWORDS: dict[str, str] = {
     "MB CHG": "Mobile banking charge"
 }
 
+def _extract_upi_merchant(text: str)->str | None :
+    """Pull the merchant/purpose from a UPI narration.
+
+    UPI narrations look like: UPI/P2A/512345/SWIGGY
+    We split on '/' and take the last segment as the merchant.
+    Returns None if this isn't a recognizable UPI string with a merchant.
+    """
+    if not text.startswith('UPI'):
+        return None
+
+    parts = text.split("/")
+    if len(parts) < 2:
+        return None
+
+    # strip to remove trailing leading spaces
+    merchant = parts[-1].strip()
+
+    if not merchant:
+        return None
+
+    return merchant
+
+
 def parse_narration(raw_narration: str, amount: float, txn_date: date) -> Transaction:
     """Interpret a raw bank narration into a structured Transaction.
 
@@ -68,6 +91,16 @@ def parse_narration(raw_narration: str, amount: float, txn_date: date) -> Transa
             amount=amount,
             txn_date=txn_date,
             txn_type=TransactionType.PURCHASE,
+        )
+
+    upi_merchant = _extract_upi_merchant(text)
+    if upi_merchant is not None:
+        return Transaction(
+            raw_narration=raw_narration,
+            amount=amount,
+            txn_date=txn_date,
+            txn_type=TransactionType.TRANSFER,
+            merchant=upi_merchant
         )
 
     # 5. Fallback: we could not identify it.

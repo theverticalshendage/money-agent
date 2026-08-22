@@ -1,0 +1,17 @@
+{
+  "account_holder": "Rahul Sharma",
+  "account_number": "XXXX XXXX 4412",
+  "opening_balance": 25000.00,
+  "transactions": [
+    { "narration": "NEFT CR SALARY ACME CORP",        "amount": 85000.00,  "date": "2025-07-01" },
+    { "narration": "UPI/P2A/512345/RENT",             "amount": -18000.00, "date": "2025-07-02" },
+    { "narration": "NETFLIX SUBSCRIPTION",            "amount": -649.00,   "date": "2025-07-03" },
+    { "narration": "POS DR 4412XXXX8901 BIGBAZAAR",   "amount": -3200.00,  "date": "2025-07-05" },
+    { "narration": "EMI HDFC HOME LOAN",              "amount": -22000.00, "date": "2025-07-05" },
+    { "narration": "UPI/P2A/998812/SWIGGY",           "amount": -540.00,   "date": "2025-07-08" },
+    { "narration": "POS DR 4412XXXX8901 AMAZON",      "amount": -2100.00,  "date": "2025-07-12" },
+    { "narration": "SPOTIFY SUBSCRIPTION",            "amount": -119.00,   "date": "2025-07-15" },
+    { "narration": "MAB CHG JUL 2025",                "amount": -590.00,   "date": "2025-07-31" },
+    { "narration": "UPI/CR/774521/REFUND AMAZON",     "amount": 2100.00,   "date": "2025-07-28" }
+  ]
+}
